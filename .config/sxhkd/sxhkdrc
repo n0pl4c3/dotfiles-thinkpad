@@ -119,3 +119,25 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# 
+# Device Specific Keys (Lenovo T480)
+#
+
+# Audio Controls
+XF86AudioMute
+	pulsemixer --toggle-mute
+
+XF86AudioRaiseVolume
+	pulsemixer --change-volume +5
+
+XF86AudioLowerVolume
+	pulsemixer --change-volume -5
+
+
+# Brightness Controls
+XF86MonBrightnessUp
+	xbacklight -inc 5
+
+XF86MonBrightnessDown
+	xbacklight -dec 5
