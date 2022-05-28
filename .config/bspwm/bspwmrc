@@ -20,3 +20,6 @@ bspc config gapless_monocle      true
 # Programs to start
 nextcloud --background &
 picom &
+
+# Wallpaper
+feh --bg-scale $HOME/Pictures/wedding_carry.png

@@ -134,6 +134,8 @@ XF86AudioRaiseVolume
 XF86AudioLowerVolume
 	pulsemixer --change-volume -5
 
+XF86AudioMicMute
+	pulsemixer --id source-1 --toggle-mute
 
 # Brightness Controls
 XF86MonBrightnessUp
