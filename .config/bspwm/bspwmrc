@@ -23,3 +23,6 @@ picom &
 
 # Wallpaper
 feh --bg-scale $HOME/Pictures/wedding_carry.png
+
+# Polybar
+$HOME/.config/polybar/launch.sh
