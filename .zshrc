@@ -1,6 +1,13 @@
 export ZSH="$HOME/.config/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
+
+plugins=(
+  git
+  rust
+  colored-man-pages
+)
+
 source $ZSH/oh-my-zsh.sh
 
 # TODO Emacs
