@@ -1,16 +1,14 @@
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.config/zsh/zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
-setopt autocd
-bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/n0pl4c3/.zshrc'
+export ZSH="$HOME/.config/.oh-my-zsh"
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
+ZSH_THEME="robbyrussell"
+source $ZSH/oh-my-zsh.sh
 
-# For dotfile management
+# TODO Emacs
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
 alias dotman='/usr/bin/git --git-dir=$HOME/repositories/dotfiles --work-tree=$HOME'
