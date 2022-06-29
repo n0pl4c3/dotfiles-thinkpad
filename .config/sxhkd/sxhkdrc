@@ -120,6 +120,13 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+
+#
+# Keyboard Layout Switching
+#
+super + shift + {q,d}
+        setxkbmap {de, dvorak}
+
 # 
 # Device Specific Keys (Lenovo T480)
 #
