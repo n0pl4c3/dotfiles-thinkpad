@@ -1,0 +1,92 @@
+; Absolute Patchwork, currently just a glorified debugger for my scripts
+; Also lots of copied code
+; But it will slowly come to shape
+
+(include "eww_variables.yuck")
+
+(defwidget emibar_top []
+  (box :orientation "h" 
+    (box :class "left" :orientation "h" :halign "start" :space-evenly false :spacing 20 (workspaces) (volume))
+    (box :class "middle" :orientation "h" :halign "center" :space-evenly false (spotify_display))
+    (box :class "right" :orientation "h" :halign "end" :space-evenly false :spacing 25 (battery) (time))))
+
+(defwidget workspaces []
+  (literal :content workspaces))
+
+(defwidget battery []
+  (label :text charge 
+         :class "battery_symbol" 
+         :tooltip "Battery 1: ${battery0}% | Battery 2: ${battery1}% ${status0 == "Charging" || status1 == "Charging" ? "| Charging" : ""}"))
+
+(defwidget spotify_display []
+  (eventbox :onhover "eww update show_controls=true" :onhoverlost "eww update show_controls=false"
+    (box :class "spotify"
+        :orientation "h"
+        :space-evenly false
+        :halign "center"
+      (revealer :reveal {!show_controls && music_title != ""}
+      (label :text " " :class "song_label"))
+      (revealer :transition "slideleft"
+                :reveal show_controls
+                :duration "350ms"
+        (box :class "spotify_controls"
+             :orientation "h"
+             :space-evenly true
+             (button :class "next-button" :onclick "scripts/spotify_controls.sh previous" "") ))
+      (button :onclick "scripts/dropdown.sh spotify" 
+        (label :limit-width 40 :text {music_title != "" ? "${music_title}" : ""}))
+      (revealer :transition "slideright"
+		:reveal show_controls
+		:duration "350ms"
+        (box :class "spotify_controls"
+             :orientation "h"
+             :space-evenly true
+             (button :class "next-button" :onclick "scripts/spotify_controls.sh next" ""))))))
+
+(defwidget spotify_dropdown []
+  (box :class "spotify_dropdown"
+       :orientation "v"
+       :space-evenly false
+       ;:halign "center"
+       :vexpand "false"
+       :hexpand "false"
+       :spacing 15
+       (label :halign "center" :valign "center" :class "title_dropdown" :wrap "true" :text music_title)
+       (label :halign "center" :valign "center" :class "artist_dropdown" :wrap "true" :text music_artist)
+       (box :class "spotify_dropdown_controls"
+            :space-evenly false
+            :orientation "h"
+            :halign "center"
+            :vexpand "false"
+            :hexpand "false"
+            (button :class "prev" :onclick "scripts/spotify_controls.sh previous" "")
+            (button :class "pause" :onclick "scripts/spotify_controls.sh toggle"
+              {spotify_status == "Playing" ? "" : "契"})
+            (button :class "next" :onclick "scripts/spotify_controls.sh next" "")
+         )))
+
+(defwidget time []
+  (eventbox :class "timeevent" :onhover "eww update show_date=true" :onhoverlost "eww update show_date=false"
+    (box :class "time"
+         :orientation "h"
+         :space-evenly false
+         :halign "end"
+         :spacing 20
+      "${time}"
+      (revealer :transition "slideleft" :reveal show_date :duration "350ms"  date))))
+
+(defwidget volume []
+   (box :class "volume"
+        :orientation "h"
+        :space-evenly false
+        (button :class "mute" :onclick "pulsemixer --toggle-mute"  (label :text {mute == "1" ? "婢" : "墳"} :class "label"))
+        (scale :class "volume_slider" 	  
+ 	       :value volume
+       	       :orientation "h"      
+ 	       :flipped false
+               :timeout "500ms"
+	       :tooltip "Volume: ${volume}%" 
+	       :max 125 
+	       :min 0 
+	       :onchange "scripts/volume.sh set {}")))
+

@@ -1,0 +1,172 @@
+$bg: #c4bcd8;
+$border: #958abe;
+$focused: #7065a1;
+$nonfocused: #fffeff;
+$urgent: #8d59ae;
+$song_color: #fffeff;
+$spotify: #8d95cc;
+$preselect: #a0aed7;
+
+//$empty: #e0d8e6;
+
+* {
+  all: unset;
+}
+
+.left {
+}
+
+.right {
+  font-family: "Hack Nerd Font";
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px; 
+}
+
+.time {
+  margin-right: 0px;
+}
+
+.battery_symbol {
+  font-size: 24px;
+}
+
+.emibar {
+  font-size: 18px;
+  background-color: $bg;
+  border: 5px solid $border;
+  border-radius: 8px;
+}
+
+.volume {
+  .label {
+    font-size: 32px;
+    color: $border;
+  }
+
+  .label:hover {
+    color: $song_color;
+  }
+
+  .volume_slider trough {
+    all: unset;
+    min-width: 120px;
+    min-height: 8px;
+    border-radius: 8px;
+    background-color: $bg;
+    margin-right: 10px;
+    margin-top: 2px;
+    margin-left: 5px;
+    color: #000000;
+    border-style: solid;
+    border-width: 2px;
+    border-color: $border;
+  }
+
+  .volume_slider trough highlight {
+    background-color: $preselect;
+    border-radius: 8px;
+  }
+}
+
+.spotify {
+  color: $song_color;
+  font-family: "Hack Nerd Font";
+  font-size: 16px;
+  font-weight: bold;
+
+  .song_label {
+    font-size: 22px;
+    color: $border;
+  }
+
+  .spotify_controls {
+    font-size: 20px;
+    margin-right: 13px;
+    margin-left: 10px;
+
+    .next-button:hover {
+      color: $border;
+      transition: color 0.5s;
+    }
+  }
+}
+
+.workspaces {
+  font-family: "Fira Code Nerd Font";
+  font-size: 18px;
+  margin-right: 0px;
+  margin-left: 4px;
+
+  button {
+    margin: 0px 5px;
+  }
+
+  .occupied {
+    color: $nonfocused;
+    &:hover {
+      color: $preselect;
+      transition: color 0.25s;
+    }
+  }
+
+  .focused {
+    color: $focused;
+  }
+
+  .urgent {
+    color: $urgent;
+    &:hover {
+      color: $preselect;
+      transition: color 0.25s;
+    }
+  }
+  
+   .empty {
+    color: $nonfocused;
+    &:hover {
+      color: $preselect;
+      transition: color 0.25s;
+    }
+  }
+}
+
+.spotify_dropdown {
+  font-size: 16px;
+  background-color: $bg;
+  border: 5px solid $border;
+  border-radius: 8px;
+  font-family: "Hack Nerd Font";
+  font-weight: bold;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  .title_dropdown {
+    font-size: 24px;
+  }
+
+  .spotify_dropdown_controls {
+    font-size: 30px;
+
+    .pause {
+      margin-left: 20px;
+      margin-right:20px;
+    }
+
+    // Either I'm stupid, or this doesn't allow multiple selectors at once
+    .prev:hover {
+        color: $preselect;
+        transition: color 0.25s;
+    }
+
+    .pause:hover {
+        color: $preselect;
+        transition: color 0.25s;
+    }
+
+    .next:hover {
+        color: $preselect;
+        transition: color 0.25s;
+    }
+  }
+}

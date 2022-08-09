@@ -150,3 +150,40 @@ XF86MonBrightnessUp
 
 XF86MonBrightnessDown
 	xbacklight -dec 5
+
+#
+# Application Chords
+#
+super + x ; f
+        firefox
+
+super + x ; d
+        discord
+
+super + x ; t
+        thunderbird
+
+# Could just use spt internals, but might extend script later
+super + m ; n
+        ~/.config/eww/scripts/spotify_controls.sh next
+
+super + m ; p
+        ~/.config/eww/scripts/spotify_controls.sh previous
+
+super + m ; t
+        ~/.config/eww/scripts/spotify_controls.sh toggle
+
+#
+# Show Hide bar
+#
+super + e ; {s, q}
+        eww {open, close} emibar
+
+#
+# Screenshot Utilities
+#
+super + alt + s
+        scrot -e 'mv $f ~/Pictures/Screenshots/'
+
+super + ctrl + s
+        scrot --select -e 'mv $f ~/Pictures/Screenshots/'

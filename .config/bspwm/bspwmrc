@@ -2,10 +2,14 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor -d I II III IV
+bspc monitor -d 1 2 3 4 5 6 7 8
 
-bspc config border_width         2
-bspc config window_gap          12
+bspc config border_width         8
+bspc config window_gap           8
+
+bspc config active_border_color \#958abe
+bspc config normal_border_color \#958abe
+bspc config focused_border_color \#958abe
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
@@ -21,11 +25,11 @@ nextcloud --background &
 picom &
 
 # Wallpaper
-feh --bg-scale $HOME/Pictures/wedding_carry.png
-
-# Polybar
-$HOME/.config/polybar/launch.sh
+feh --bg-scale $HOME/Pictures/bg.png
 
 # Spotifyd
-killall -q spotifyd
-spotifyd
+killall -q spotifyd 
+spotifyd 
+
+playerctld daemon &
+eww open emibar &
