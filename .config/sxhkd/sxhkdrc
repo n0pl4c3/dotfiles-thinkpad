@@ -125,7 +125,7 @@ super + {Left,Down,Up,Right}
 # Keyboard Layout Switching
 #
 super + shift + {q,d}
-        setxkbmap {de, dvorak}
+        setxkbmap {de, dvorak} -option ctrl:nocaps
 
 # 
 # Device Specific Keys (Lenovo T480)
