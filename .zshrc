@@ -21,7 +21,7 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
-alias dotman='/usr/bin/git --git-dir=$HOME/repositories/dotfiles --work-tree=$HOME'
+alias dotman='/usr/bin/git --git-dir=$HOME/Repositories/dotfiles --work-tree=$HOME'
 
 # Stolen from wiki.waifu.haus, really nice idea
 wiki () {
@@ -34,3 +34,6 @@ wiki () {
             return 1 ;;
     esac
 }
+
+# To prevent issues with ssh and missing terminfo
+alias ssh="TERM=xterm-256color ssh"
