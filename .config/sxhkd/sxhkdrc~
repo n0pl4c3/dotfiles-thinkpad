@@ -187,18 +187,3 @@ super + alt + s
 
 super + ctrl + s
         scrot --select -e 'mv $f ~/Pictures/Screenshots/'
-
-#
-# Emacs <3
-#
-super + e ; c
-        emacsclient -c -n -u
-
-super + e ; e
-        emacs
-
-super + e ; d
-        emacs --daemon
-
-super + e ; k
-        emacsclient -e "(kill-emacs)"

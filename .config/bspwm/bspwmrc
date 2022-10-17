@@ -2,7 +2,7 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor -d 1 2 3 4 5 6 7 8
+bspc monitor eDP1 -d 1 2 3 4 5 6 7 8
 
 bspc config border_width         8
 bspc config window_gap           8
@@ -24,12 +24,25 @@ bspc rule -a Emacs state=tiled
 nextcloud --background &
 picom &
 
-# Wallpaper
-feh --bg-scale $HOME/Pictures/bg.png
-
 # Spotifyd
 killall -q spotifyd 
 spotifyd 
 
 playerctld daemon &
 eww open emibar &
+
+# Multi Monitor
+if [[ $(xrandr -q | grep 'HDMI2 connected') ]]; then 
+  xrandr --output  eDP1 --primary --auto --rotate normal --output HDMI2 --auto --rotate normal --right-of eDP1 &
+
+  bspc monitor eDP1 -d 1 2 3 4 5 6 7 8
+  bspc monitor HDMI2 -d 5 6 7 8
+
+  eww open emibar_external &
+fi
+
+# Wallpaper
+feh --bg-scale $HOME/Pictures/bg.png
+
+emacsclient -e "(kill-emacs)"
+emacs --daemon

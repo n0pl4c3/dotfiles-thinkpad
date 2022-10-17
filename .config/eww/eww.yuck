@@ -13,6 +13,19 @@
   :wm-ignore false
   (emibar_top))
 
+(defwindow emibar_external
+  :monitor 1
+  :geometry (geometry :x "0%"
+                      :y "4px"
+                      :width "99%"
+                      :height "38px"
+                      :anchor "top center")
+  :stacking "fg"
+  :reserve (struts :distance "40px" :side "top")
+  :windowtype "dock"
+  :wm-ignore false
+  (emibar_top))
+
 (defwindow emibar_spotify
   :monitor 0
   :stacking "fg"
