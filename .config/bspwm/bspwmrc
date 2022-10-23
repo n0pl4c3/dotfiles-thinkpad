@@ -35,7 +35,7 @@ eww open emibar &
 if [[ $(xrandr -q | grep 'HDMI2 connected') ]]; then 
   xrandr --output  eDP1 --primary --auto --rotate normal --output HDMI2 --auto --rotate normal --right-of eDP1 &
 
-  bspc monitor eDP1 -d 1 2 3 4 5 6 7 8
+  bspc monitor eDP1 -d 1 2 3 4
   bspc monitor HDMI2 -d 5 6 7 8
 
   eww open emibar_external &
