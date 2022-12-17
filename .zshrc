@@ -1,5 +1,8 @@
 export ZSH="$HOME/.config/.oh-my-zsh"
 
+# Add Scala
+export PATH="$PATH:/home/n0pl4c3/.local/share/coursier/bin"
+
 ZSH_THEME="robbyrussell"
 
 plugins=(
