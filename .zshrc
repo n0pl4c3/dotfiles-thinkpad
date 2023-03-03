@@ -40,3 +40,6 @@ wiki () {
 
 # To prevent issues with ssh and missing terminfo
 alias ssh="TERM=xterm-256color ssh"
+
+# Should be working out of the box but eh
+alias ZZZ="zzz -Z"
