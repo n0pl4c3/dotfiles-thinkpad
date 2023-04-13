@@ -42,4 +42,4 @@ wiki () {
 alias ssh="TERM=xterm-256color ssh"
 
 # Should be working out of the box but eh
-alias ZZZ="zzz -Z"
+alias ZZZ="sudo zzz -Z"

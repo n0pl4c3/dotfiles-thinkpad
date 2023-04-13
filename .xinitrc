@@ -4,7 +4,7 @@ userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
-
+AWT_TOOLKIT=MToolkit; export AWT_TOOLKIT
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
