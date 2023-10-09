@@ -1,0 +1,54 @@
+colors:
+  # Default colors
+  primary:
+    background: '0xfffeff'
+    foreground: '0x7065a1'
+
+  # Normal colors
+  normal:
+    black:   '0xc4bcd8'
+    red:     '0xa0aed7'
+    green:   '0x6ca5ed'
+    yellow:  '0x9b67b6'
+    blue:    '0x77b7e7'
+    magenta: '0xe8aac5'
+    cyan:    '0x4bc2a0'
+    white:   '0xaba3ca'
+
+  # Bright colors
+  bright:
+    black:   '0xc1afd1'
+    red:     '0x8d95cc'
+    green:   '0xbea3d2'
+    yellow:  '0x8d59ae'
+    blue:    '0x6aaaf5'
+    magenta: '0xd2a4b4'
+    cyan:    '0x6eb5a7'
+    white:   '0x8275b0'
+
+
+font:
+  normal:
+    family: Fira Mono NerdFont
+    style: Regular
+
+  bold:
+    family: Fira Mono NerdFont
+    style: Bold
+
+  italic:
+    family: Fira Mono NerdFont
+    style: Italic
+
+  bold_italic:
+    family: Fira Mono NerdFont
+    style: Bold Italic
+
+  size: 10
+
+cursor:
+  style:
+    shape: Beam
+  vi_mode_style:
+    shape: Block
+

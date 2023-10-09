@@ -1,0 +1,58 @@
+(defpoll music_current 
+  :interval "1s" 
+  "~/.config/eww/scripts/spotify_controls.sh format")
+
+(defpoll music_title 
+  :interval "1s" 
+  "~/.config/eww/scripts/spotify_controls.sh song")
+ 
+(defpoll music_artist
+  :interval "1s" 
+  "~/.config/eww/scripts/spotify_controls.sh artist")
+
+(defpoll spotify_status
+  :interval "1s"
+  "~/.config/eww/scripts/spotify_controls.sh status")
+
+(defpoll time :interval "1s"
+    :initial "initial-value"
+    `date +%H:%M`)
+
+(defpoll date :interval "1s"
+    :initial "initial-value"
+    `date +%d/%m/%Y`)
+
+(defpoll volume :initial "0"
+                :interval "1s" 
+  "scripts/volume.sh get")
+
+(defpoll charge :initial ""
+                :interval "5s"
+  "scripts/battery.sh")
+
+(defpoll battery0 :initial "100"
+                  :interval "30s"
+  `cat /sys/class/power_supply/BAT0/capacity`)
+
+(defpoll battery1 :initial "100"
+                  :interval "30s"
+  `cat /sys/class/power_supply/BAT1/capacity`)
+
+(defpoll status0 :initial "Loading..."
+                  :interval "5s"
+  `cat /sys/class/power_supply/BAT0/status`)
+
+(defpoll status1 :initial "Loading..."
+                  :interval "5s"
+  `cat /sys/class/power_supply/BAT1/status`)
+
+(deflisten workspaces "scripts/workspaces.sh")
+
+(defvar show_controls false)
+(defvar show_volume false)
+(defpoll mute :initial "0" :interval "1s" `pulsemixer --get-mute`)
+
+; State Keeping
+(defvar music_visible false)
+
+(defvar show_date false)
