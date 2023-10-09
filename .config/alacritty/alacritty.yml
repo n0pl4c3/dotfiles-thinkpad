@@ -49,6 +49,7 @@ font:
 cursor:
   style:
     shape: Beam
-  vi_mode_style:
-    shape: Block
+    blinking: Always
+  unfocused_hollow: false
+  blink_interval: 500
 
