@@ -7,9 +7,9 @@
     ### Geometry ###
 
     # constant width
-    width = 350
+    width = (350, 600)
     # max height
-    height = 300
+    height = 500
 
     origin = top-right
     offset = 12x45
@@ -60,7 +60,7 @@
     font = FiraMono Nerd Font 12
     line_height = 0
     markup = full
-    format = "<b>%s</b>\n%b"
+    format = "<b>%a</b>\n%s"
     alignment = center
     vertical_alignment = center
 
