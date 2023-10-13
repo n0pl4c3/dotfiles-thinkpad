@@ -1,7 +1,6 @@
 export ZSH="$HOME/.config/.oh-my-zsh"
 
-# Add Scala
-# export PATH="$PATH:/home/n0pl4c3/.local/share/coursier/bin"
+export PATH="$PATH:/home/n0pl4c3/.local/bin/"
 
 ZSH_THEME="robbyrussell"
 
@@ -45,3 +44,7 @@ alias ssh="TERM=xterm-256color ssh"
 alias ZZZ="sudo zzz -Z"
 
 eval "$(starship init zsh)"
+
+miniterm() {
+    python3 -m serial.tools.miniterm "$1" "$2"
+}
