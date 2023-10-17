@@ -185,8 +185,8 @@ Plug 'HerringtonDarkholme/yats.vim'
 "*****************************************************************************
 
 "" Include user's extra bundle
-if filereadable(expand("~/.config/nvim/local_bundles.vim"))
-  source ~/.config/nvim/local_bundles.vim
+if filereadable(expand("~/.config/nvim/emivim_pkg.vim"))
+  source ~/.config/nvim/emivim_pkg.vim
 endif
 
 call plug#end()
@@ -761,8 +761,8 @@ let g:yats_host_keyword = 1
 "*****************************************************************************
 
 "" Include user's local vim config
-if filereadable(expand("~/.config/nvim/local_init.vim"))
-  source ~/.config/nvim/local_init.vim
+if filereadable(expand("~/.config/nvim/emivim.vim"))
+  source ~/.config/nvim/emivim.vim
 endif
 
 "*****************************************************************************

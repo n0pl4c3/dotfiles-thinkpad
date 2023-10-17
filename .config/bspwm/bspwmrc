@@ -33,6 +33,7 @@ playerctld daemon &
 eww open emibar &
 
 # Multi Monitor
+# TODO Can we set up 1-2 mirrored workspaces?
 if [[ $(xrandr -q | grep 'HDMI2 connected') ]]; then 
   xrandr --output  eDP1 --primary --auto --rotate normal --output HDMI2 --auto --rotate normal --right-of eDP1 &
 
