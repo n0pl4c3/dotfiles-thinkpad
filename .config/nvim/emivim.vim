@@ -7,3 +7,4 @@ let g:UltiSnipsSnippetDirectories=["n0snips"]
 
 " VimTex
 let g:tex_flavor = 'latex'
+let g:vimtex_view_method = 'zathura'
