@@ -17,6 +17,7 @@ Plug 'tpope/vim-commentary'
 Plug 'gelguy/wilder.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'andweeb/presence.nvim'
 call plug#end()
 
 filetype plugin indent on
@@ -38,9 +39,9 @@ set clipboard=unnamedplus
 let mapleader = ','
 
 "UltiSnips Stuff
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<Nop>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetDirectories=["n0snips"]
 
 " VimTex
@@ -53,7 +54,23 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_skip_empty_sections = 1
 
+"Copilot
+imap <silent><script><expr> <C-Space> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
 " CoC
+" use <tab> to trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<tab>" :
+      \ coc#refresh()
+
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
@@ -64,6 +81,11 @@ nnoremap <silent> <space>s :<C-u>CocList -I symbols<cr>
 
 nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
 
+"inoremap <silent><expr> <tab> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
+
 nmap <leader>do <Plug>(coc-codeaction)
 
 nmap <leader>rn <Plug>(coc-rename)
+
+let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_prev = '<s-tab>'
