@@ -18,6 +18,7 @@ Plug 'gelguy/wilder.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'andweeb/presence.nvim'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 filetype plugin indent on
