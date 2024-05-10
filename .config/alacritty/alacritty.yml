@@ -53,3 +53,5 @@ cursor:
   unfocused_hollow: false
   blink_interval: 500
 
+dynamic padding: true
+
