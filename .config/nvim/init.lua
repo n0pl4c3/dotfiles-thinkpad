@@ -12,11 +12,3 @@ require("keymap")
 
 -- Theme (todo write own theme)
 require("theme")
-
--- Statusline
-require("statusline")
-
--- LSP Setup
-require("lsp")
-require("completion")
-require("formatting")

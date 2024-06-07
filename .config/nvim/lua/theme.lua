@@ -1,1 +1,2 @@
-vim.cmd('colorscheme catppuccin-mocha')
+vim.o.background = "light"
+vim.cmd([[colorscheme gruvbox]])
