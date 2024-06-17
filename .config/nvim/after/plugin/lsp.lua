@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "pylsp", "lua_ls", "rust_analyzer" },
+	ensure_installed = { "pylsp", "lua_ls", "rust_analyzer", "bashls", "clangd" },
 })
 
 local on_attach = function(_, bufnr)
@@ -55,6 +55,11 @@ lspconfig.clangd.setup({
 })
 
 lspconfig.texlab.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+lspconfig.bashls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })

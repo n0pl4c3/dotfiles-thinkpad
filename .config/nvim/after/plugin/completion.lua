@@ -2,7 +2,12 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 
 require("luasnip.loaders.from_vscode").lazy_load()
-luasnip.config.setup({})
+require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets" })
+luasnip.config.setup({
+  history = true,
+  enable_autosnippets = true,
+  store_selection_keys = "<Tab>",
+})
 
 cmp.setup({
 	snippet = {
