@@ -163,6 +163,21 @@ super + x ; d
 super + x ; t
         thunderbird
 
+#
+# Anki/Ames 
+#
+super + r 
+        ames -r
+super + a ; s
+        ames -s
+super + a ; r 
+        ames -a 
+super + a ; w 
+        ames -w 
+super + a ; c 
+        ames -c
+
+
 # Could just use spt internals, but might extend script later
 super + m ; n
         ~/.config/eww/scripts/spotify_controls.sh next
