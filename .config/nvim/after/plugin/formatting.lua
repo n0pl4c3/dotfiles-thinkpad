@@ -9,7 +9,7 @@ require("conform").setup({
 		c = { "clang-format" },
 		cpp = { "clang-format" },
 		rust = { "rustfmt" },
-    tex = { "latexindent" },
+		tex = { "latexindent" },
 	},
 })
 
@@ -25,4 +25,4 @@ vim.api.nvim_create_user_command("Format", function(args)
 	require("conform").format({ async = true, lsp_fallback = true, range = range })
 end, { range = true })
 
-keymap_buf("<leader>f", ":Format<CR>", "Format current buffer")
+keymap_buf("<leader>f", ":Format<CR>", "[Conform] Format Buffer")

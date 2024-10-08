@@ -47,7 +47,7 @@ if [[ $(xrandr -q | grep 'HDMI2 connected') ]]; then
 fi
 
 # Wallpaper
-feh --bg-scale $HOME/Pictures/Wallpaper/stealth.jpg
+feh --bg-scale $HOME/Pictures/Wallpaper/bg1.png
 
 emacsclient -e "(kill-emacs)"
 emacs --daemon
