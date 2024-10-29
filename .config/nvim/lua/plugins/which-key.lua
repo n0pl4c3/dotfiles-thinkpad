@@ -1,13 +1,13 @@
 local which_key = {
-    {
-      "folke/which-key.nvim",
-      event = "VeryLazy",
-      init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 1000
-      end,
-      opts = {}
-    },
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 1000
+		end,
+		opts = {},
+	},
 }
 
 return which_key

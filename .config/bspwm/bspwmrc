@@ -26,7 +26,7 @@ bspc rule -a Zathura state=tiled
 bspc rule -a Emacs state=tiled
 
 # Programs to start
-picom &
+#picom &
 
 # Spotifyd
 killall -q spotifyd 
