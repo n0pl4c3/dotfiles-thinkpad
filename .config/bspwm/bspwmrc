@@ -11,9 +11,9 @@ bspc monitor eDP1 -d 1 2 3 4 5 6 7 8
 bspc config border_width         10
 bspc config window_gap           10
 
-bspc config active_border_color \#958abe
+bspc config active_border_color \#7e63dd
 bspc config normal_border_color \#958abe
-bspc config focused_border_color \#958abe
+bspc config focused_border_color \#7e63dd
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true

@@ -21,3 +21,5 @@ keymap_general("<leader>,", ":bprevious<CR>", "Prev. Buffer")
 -- Windows
 keymap_general("<leader>vs", ":vs<CR>", "Vertical Split")
 keymap_general("<leader>hs", ":sp<CR>", "Horiz. Split")
+
+keymap_general("<leader>q", ":bp|bd #<CR>", "Close Buffer")

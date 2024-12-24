@@ -63,7 +63,7 @@ entry {
     background-color:            inherit;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 "Emilia loves you, n0pl4c3!...";
+    placeholder:                 "Emi!";
     placeholder-color:           inherit;
 }
 num-filtered-rows {

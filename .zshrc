@@ -1,7 +1,5 @@
 export ZSH="$HOME/.config/.oh-my-zsh"
-
-export PATH="$PATH:/home/n0pl4c3/.local/bin/"
-
+export PATH="$PATH:/home/n0pl4c3/.local/bin/:/home/n0pl4c3/.nimble/bin/"
 ZSH_THEME="robbyrussell"
 
 plugins=(
@@ -14,39 +12,29 @@ plugins=(
 source $HOME/.config/variables/addresses
 
 source $ZSH/oh-my-zsh.sh
+export EDITOR='nvim'
 
-# TODO Emacs
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
+# Aliases
 alias dotman='/usr/bin/git --git-dir=$HOME/Repositories/dotfiles --work-tree=$HOME'
-
-# Stolen from wiki.waifu.haus, really nice idea
-wiki () {
-  mkdir -pv "$HOME"/Downloads/wiki
-  case $1 in
-    (pull) rsync -u -r -h --progress "$VPS1":"$VPS_WIKI_DIR" "$HOME"/Downloads/wiki/ ;;
-    (push) rsync -u -r -h --progress "$HOME"/Downloads/wiki/index.html "$VPS1":"$VPS_WIKI_DIR" ;;
-    (open) xdg-open file://"$HOME"/Downloads/wiki/index.html ;;
-    (*) echo "Unknown command $1"
-            return 1 ;;
-    esac
-}
-
-# To prevent issues with ssh and missing terminfo
 alias ssh="TERM=xterm-256color ssh"
-
-# Should be working out of the box but eh
 alias ZZZ="sudo zzz -Z"
 alias c="clear"
 alias ..="cd .."
 
-eval "$(starship init zsh)"
+# Functions
+nvim() {
+    kitty @set-colors background=#1E1E2E && /sbin/nvim "$1" && kitty @set-colors background=#FFFEFF
+}
+
+mkcd() {
+    mkdir -p "$1" && cd "$1"
+}
 
 miniterm() {
     python3 -m serial.tools.miniterm "$1" "$2"
 }
+
+# Prompt
+eval "$(starship init zsh)"
+
+[ -f "/home/n0pl4c3/.ghcup/env" ] && . "/home/n0pl4c3/.ghcup/env" # ghcup-env

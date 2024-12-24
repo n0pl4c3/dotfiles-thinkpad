@@ -11,7 +11,7 @@ local lspconfig = {
 			init = function()
 				require("mason").setup()
 				require("mason-lspconfig").setup({
-					ensure_installed = { "pylsp", "lua_ls", "rust_analyzer", "bashls", "clangd" },
+					ensure_installed = { "pylsp", "lua_ls", "rust_analyzer", "bashls", "clangd", "hls"  },
 				})
 
 				local on_attach = function(_, bufnr)
@@ -69,6 +69,18 @@ local lspconfig = {
 					capabilities = capabilities,
 				})
 
+        lspconfig.dartls.setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+        })
+
+        lspconfig.nimls.setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+        })
+
+        require('lspconfig').gleam.setup({})
+
 				lspconfig.verible.setup({
 					on_attach = on_attach,
 					capabilities = capabilities,
@@ -76,6 +88,12 @@ local lspconfig = {
 					root_dir = lspconfig.util.root_pattern({ ".git", "verilator.f" }),
 					format_on_save = true,
 				})
+
+        lspconfig.hls.setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+        })
+
 			end,
 		},
 		{
