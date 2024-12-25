@@ -1,0 +1,39 @@
+font=ProggyCleanNerdFont 13
+default-timeout=5000
+ignore-timeout=1
+
+on-button-left=invoke-default-action
+on-button-middle=dismiss-group
+on-button-right=dismiss
+
+background-color=#958abe
+text-color=#fffeff
+
+width=300
+height=100
+
+border-size=4
+border-radius=0
+border-color=#7e63dd
+
+progress-color=over #7065a1
+icons=1
+max-icon-size=80
+icon-path=""
+icon-location=left
+
+markup=1
+actions=1
+history=1
+max-history=50
+
+format=<b>%a</b>  %s\n%b
+text-alignment=center
+
+max-visible=-1
+output=""
+anchor=top-right
+
+margin=5,7
+
+
