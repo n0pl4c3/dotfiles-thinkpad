@@ -1,48 +1,12 @@
 #!/bin/sh
-# Credits: https://github.com/druskus20/eugh
 
-# Checks if a list ($1) contains an element ($2)
-contains() {
-    for e in $1; do
-        [ "$e" -eq "$2" ] && echo 1 && return 
-    done
-    echo 0
+workspaces (){
+    WORKSPACE_FOCUSED=$(hyprctl monitors -j | jq '.[] | select(.focused) | .activeWorkspace.id') 
+    WORKSPACE_WINDOWS=$(hyprctl workspaces -j | jq 'map({key: .id | tostring, value: .windows}) | from_entries')
+    seq 1 10 | jq --arg focused_id "$WORKSPACE_FOCUSED" --argjson windows "${WORKSPACE_WINDOWS}" --slurp -Mc 'map(tostring) | map({id: ., windows: ($windows[.]//0), focused: (. == $focused_id)})'
 }
 
-print_workspaces() {
-    buf=""
-    desktops=$(bspc query -D --names)
-    focused_desktop=$(bspc query -D -d focused --names)
-    occupied_desktops=$(bspc query -D -d .occupied --names)
-    urgent_desktops=$(bspc query -D -d .urgent --names)
-    
-    for d in $desktops; do
-        if [ "$(contains "$focused_desktop" "$d")" -eq 1 ]; then
-            ws=$d
-            icon=""
-            class="focused"
-        elif [ "$(contains "$occupied_desktops" "$d")" -eq 1 ]; then
-            ws=$d
-            icon=""
-            class="occupied"
-        elif [ "$(contains "$urgent_desktops" "$d")" -eq 1 ]; then
-            ws=$d
-            icon=""
-            class="urgent"
-        else 
-            ws=$d
-            icon=""
-            class="empty"
-        fi  
-
-        buf="$buf (eventbox :cursor \"hand\" (button :class \"$class\" :onclick \"bspc desktop -f $ws\" \"$icon\"))"
-    done
-
-    echo "(box :class \"workspaces\" :halign \"center\" :valign \"center\" :vexpand true :hexpand true $buf)"
-}
-
-# Listen to bspwm changes
-print_workspaces
-bspc subscribe desktop node_transfer | while read -r _ ; do
-    print_workspaces
-done 
+workspaces
+socat -u UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while read -r line; do
+  workspaces
+done

@@ -1,10 +1,13 @@
 # See dunst(5) for all configuration options
 
 [global]
+    follow = mouse
+
     ### Display ###
     monitor = 0
 
     ### Geometry ###
+    separator_height = 2
 
     # constant width
     width = (350, 600)
@@ -12,7 +15,7 @@
     height = 500
 
     origin = top-right
-    offset = 12x45
+    offset = 10x10
 
     scale = 0 # Auto-Detect
 

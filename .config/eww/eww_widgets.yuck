@@ -1,22 +1,47 @@
-; Absolute Patchwork, currently just a glorified debugger for my scripts
-; Also lots of copied code
-; But it will slowly come to shape
-
 (include "eww_variables.yuck")
 
-(defwidget emibar_top []
+(defwidget emibar_widget []
   (box :orientation "h" 
     (box :class "left" :orientation "h" :halign "start" :space-evenly false :spacing 20 (workspaces) (volume))
     (box :class "middle" :orientation "h" :halign "center" :space-evenly false (spotify_display))
     (box :class "right" :orientation "h" :halign "end" :space-evenly false :spacing 25 (battery) (time))))
 
 (defwidget workspaces []
-  (literal :content workspaces))
+    (box :class "workspaces" :space-evenly true
+      (for workspace in workspaces
+        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (box :class "workspace-entry ${workspace.windows > 0 ? "occupied" : "empty"}"
+            (button  :class "workspace-entry ${workspace.focused ? "current" : "noncurrent"}" ""))))))
+
+(defwidget volume []
+   (box :class "volume"
+        :orientation "h"
+        :space-evenly false
+        (button :class "mute" :onclick "wpctl set-mute @DEFAULT_SINK@ toggle"  (label :text {mute == "[MUTED]" ? "󰖁" : "󰕾"} :class "label"))
+        (scale :class "volume_slider" 	  
+ 	       :value volume
+       	       :orientation "h"      
+ 	       :flipped false
+               :timeout "500ms"
+	       :tooltip "Volume: ${volume}%" 
+	       :max 125 
+	       :min 0 
+	       :onchange "scripts/volume.sh set {}")))
 
 (defwidget battery []
   (label :text charge 
          :class "battery_symbol" 
          :tooltip "Battery 1: ${battery0}% | Battery 2: ${battery1}% ${status0 == "Charging" || status1 == "Charging" ? "| Charging" : ""}"))
+
+(defwidget time []
+  (eventbox :class "timeevent" :onhover "eww update show_date=true" :onhoverlost "eww update show_date=false"
+    (box :class "time"
+         :orientation "h"
+         :space-evenly false
+         :halign "end"
+         :spacing 20
+      "${time}"
+      (revealer :transition "slideleft" :reveal show_date :duration "350ms"  date))))
 
 (defwidget spotify_display []
   (eventbox :onhover "eww update show_controls=true" :onhoverlost "eww update show_controls=false"
@@ -65,29 +90,6 @@
             (button :class "next" :onclick "scripts/spotify_controls.sh next" "")
          )))
 
-(defwidget time []
-  (eventbox :class "timeevent" :onhover "eww update show_date=true" :onhoverlost "eww update show_date=false"
-    (box :class "time"
-         :orientation "h"
-         :space-evenly false
-         :halign "end"
-         :spacing 20
-      "${time}"
-      (revealer :transition "slideleft" :reveal show_date :duration "350ms"  date))))
 
-(defwidget volume []
-   (box :class "volume"
-        :orientation "h"
-        :space-evenly false
-        (button :class "mute" :onclick "pulsemixer --toggle-mute"  (label :text {mute == "1" ? "󰖁" : "󰕾"} :class "label"))
-        (scale :class "volume_slider" 	  
- 	       :value volume
-       	       :orientation "h"      
- 	       :flipped false
-               :timeout "500ms"
-	       :tooltip "Volume: ${volume}%" 
-	       :max 125 
-	       :min 0 
-	       :onchange "scripts/volume.sh set {}")))
 
 

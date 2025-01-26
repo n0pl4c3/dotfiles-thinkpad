@@ -7,49 +7,63 @@ $song_color: #fffeff;
 $spotify: #8d95cc;
 $preselect: #a0aed7;
 
-//$empty: #e0d8e6;
-
 * {
   all: unset;
 }
 
-.left {
-}
-
-.right {
-  font-family: "Hack Nerd Font";
-  font-size: 18px;
-  font-weight: bold;
-  margin-right: 10px; 
-}
-
-.time {
-  margin-right: 0px;
-}
-
-.battery_symbol {
-  font-size: 24px;
-}
-
 .emibar {
-  font-size: 18px;
+  font-size: 14px;
   background-color: $bg;
-  border: 5px solid $border;
-  border-radius: 8px;
+  border: 4px solid $border;
+  border-radius: 3px;
 }
 
-.emibar_external {
-  font-size: 18px;
-  background-color: $bg;
-  border: 5px solid $border;
-  border-radius: 8px;
-}
+.workspaces {
+  font-family: "Hack Nerd Font";
+  font-size: 16px;
+  margin-right: 0px;
+  margin-left: 4px;
 
+  .workspace-entry {
+    padding: 0px 0.01px;
+    margin: 0px 0.01px;
+    &:hover {
+      color: $preselect;
+      transition: color 0.25s;
+    }
+  }
+
+  .occupied {
+    color: $nonfocused;
+  }
+
+  .current {
+    color: $focused;
+  }
+
+  .current:hover {
+    color: $preselect;
+    transition: color 0.25s;
+  }
+
+  .noncurrent:hover {
+    color: $preselect;
+    transition: color 0.25s; 
+  }
+
+  .urgent {
+    color: $urgent;
+  }
+  
+   .empty {
+    color: $nonfocused;
+  }
+}
 
 .volume {
   .label {
     font-family: "Hack Nerd Font";
-    font-size: 32px;
+    font-size: 24px;
     color: $border;
   }
 
@@ -60,8 +74,8 @@ $preselect: #a0aed7;
   .volume_slider trough {
     all: unset;
     min-width: 120px;
-    min-height: 8px;
-    border-radius: 8px;
+    min-height: 7px;
+    border-radius: 6px;
     background-color: $bg;
     margin-right: 10px;
     margin-top: 2px;
@@ -78,14 +92,27 @@ $preselect: #a0aed7;
   }
 }
 
+.battery_symbol {
+  font-family: "Hack Nerd Font";
+  font-size: 20px;
+}
+
+.time {
+  /* font-family: "Hack Nerd Font"; */
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 4px;
+
+}
+
 .spotify {
   color: $song_color;
   font-family: "Hack Nerd Font";
-  font-size: 16px;
+  font-size: 12px;
   font-weight: bold;
 
   .song_label {
-    font-size: 22px;
+    font-size: 18px;
     color: $border;
   }
 
@@ -101,47 +128,8 @@ $preselect: #a0aed7;
   }
 }
 
-.workspaces {
-  font-family: "Hack Nerd Font";
-  font-size: 18px;
-  margin-right: 0px;
-  margin-left: 4px;
-
-  button {
-    margin: 0px 5px;
-  }
-
-  .occupied {
-    color: $nonfocused;
-    &:hover {
-      color: $preselect;
-      transition: color 0.25s;
-    }
-  }
-
-  .focused {
-    color: $focused;
-  }
-
-  .urgent {
-    color: $urgent;
-    &:hover {
-      color: $preselect;
-      transition: color 0.25s;
-    }
-  }
-  
-   .empty {
-    color: $nonfocused;
-    &:hover {
-      color: $preselect;
-      transition: color 0.25s;
-    }
-  }
-}
-
 .spotify_dropdown {
-  font-size: 16px;
+  font-size: 15px;
   background-color: $bg;
   border: 5px solid $border;
   border-radius: 8px;
@@ -151,7 +139,7 @@ $preselect: #a0aed7;
   padding-bottom: 30px;
 
   .title_dropdown {
-    font-size: 24px;
+    font-size: 18px;
   }
 
   .spotify_dropdown_controls {
@@ -162,7 +150,6 @@ $preselect: #a0aed7;
       margin-right:20px;
     }
 
-    // Either I'm stupid, or this doesn't allow multiple selectors at once
     .prev:hover {
         color: $preselect;
         transition: color 0.25s;
@@ -179,3 +166,5 @@ $preselect: #a0aed7;
     }
   }
 }
+
+
